@@ -1,9 +1,9 @@
-package SelectionSort;
+package BubbleSort;
 
 import java.util.Random;
 
 //	O(n^2)
-public class SelectionSort {
+public class BubbleSort {
 	public static int N = 1000;
 	public static int MAX_NUM = 10000;
 	public static int steps = 0;
@@ -14,7 +14,7 @@ public class SelectionSort {
 		int[] list = createList();
 		System.out.println("UNSORTED: "+print(list));
 		long timeBefore = System.nanoTime();
-		list = selectionSort(list);
+		list = bubbleSort(list);
 		long timeAfter= System.nanoTime();
 		long timeDelayed = timeAfter - timeBefore;
 		System.out.println("SORTED: "+print(list));
@@ -32,23 +32,24 @@ public class SelectionSort {
 		return res;
 	}
 	
-	public static int[] selectionSort(int list[]){ 
+	public static int[] bubbleSort(int list[]){ 
         int n = list.length;
-        steps++;
+        int temp;
+        boolean swapped = false;
   
-        for (int i = 0; i < n-1; i++){
-            int min_idx = i;
-            for (int j = i+1; j < n; j++) {
-            	steps++;
-                if (list[j] < list[min_idx]) {
-                	min_idx = j;
-                }
-            }
-
-            int temp = list[min_idx]; 
-            list[min_idx] = list[i]; 
-            list[i] = temp; 
-        }
+        do {
+        	swapped = false;
+	        for (int i = 0; i < n-1; i++){
+	        	steps++;
+	        	if(list[i] > list[i+1]) {
+	        		swapped = true;
+	        		temp = list[i];
+	        		list[i] = list[i+1];
+	        		list[i+1] = temp;
+	        	}
+	
+	        }
+        } while(swapped);
         return list;
     } 
 	
