@@ -4,20 +4,20 @@ import java.util.Random;
 
 //	O(nLog(n))
 public class MergeSort {
-	public static int N = 1000;
-	public static int MAX_NUM = 10000;
+	public static int N = 256000;
+	public static int MAX_NUM = 256000;
 	public static int steps = 0;
 
 	public static void main(String[] args) {
 		System.out.println("Size of list: "+N);
 		System.out.println("Max int of list allowed: "+MAX_NUM);
 		int[] list = createList();
-		System.out.println("UNSORTED: "+print(list));
+//		System.out.println("UNSORTED: "+print(list));
 		long timeBefore = System.nanoTime();
 		sort(list, 0, list.length-1);
 		long timeAfter= System.nanoTime();
 		long timeDelayed = timeAfter - timeBefore;
-		System.out.println("SORTED: "+print(list));
+//		System.out.println("SORTED: "+print(list));
 		System.out.println("Time delayed: "+timeDelayed+"ns");
 
 	}
